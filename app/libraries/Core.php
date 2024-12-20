@@ -14,27 +14,27 @@
                 $this->controller = ucwords($url[0]);
                 unset($url[0]);
             }
-            require_once '../app/controllers/'.$this->controller.'.php';
+            
+        }
 
-            // instantiation of controller
+        
+        require_once '../app/controllers/'.$this->controller.'.php';
 
-            $this->controller = new $this->controller;
+        // instantiation of controller
 
-            if(isset($url[1])){
-                if(method_exists($this->controller,$url[1])){
-                    $this->methode = $url[1];
-                    unset($url[1]);
-                }
+        $this->controller = new $this->controller;
 
+        if(isset($url[1])){
+            if(method_exists($this->controller,$url[1])){
+                $this->methode = $url[1];
+                unset($url[1]);
             }
 
-            $this->param = $url ? array_values($url) : []; //ternary operator
-
-            // call the function
-
-            call_user_func_array([$this->controller,$this->methode],$this->param);
-
         }
+
+        $this->param = $url ? array_values($url) : []; //ternary operator
+        
+        call_user_func_array([$this->controller,$this->methode],$this->param);
     }
 
     public function geturl(){
