@@ -9,7 +9,7 @@ class Posts extends Controller
         $this->postmodel = $this->model('Post');
     }
     public function index(){
-         echo "nice";
+         $this->view('posts/index');
     }
 
     public function edit($id){
