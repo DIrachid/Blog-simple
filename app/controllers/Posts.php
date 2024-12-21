@@ -1,19 +1,21 @@
 <?php
 
-
 // create class
-
+#[AllowDynamicProperties]
 class Posts extends Controller
 {
 
     public function __construct(){
         $this->postmodel = $this->model('Post');
     }
-    public function index(): void{
+    public function index(){
          echo "nice";
     }
 
     public function edit($id){
-        $this->postmodel->edit();
+        $data = [
+            'id' => $id
+        ];
+        $this->view('posts/edit',$data);
     }
 }
