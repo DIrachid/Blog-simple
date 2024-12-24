@@ -1,10 +1,15 @@
 <?php
 
 #[AllowDynamicProperties]
-class Users extends Controller{
+class Users extends Controller
+{
 
     public function __construct(){
         $this->usermodel = $this->model('User');
+    }
+
+    public function index(){
+        echo "hello";
     }
 
     public function register(){
@@ -34,12 +39,20 @@ class Users extends Controller{
                 $data['email-err'] = 'email already taken';
             }
 
+            // create user
+
+            if(!empty($data['name-err']) && !empty($data['email-err']) && !empty($data['password-err']) && !empty(['confirm-password-err'])){
+                $this->view('users/register',$data);
+            }else{
+
+            }
+
         }else{
             $data = [
                 'name' => '',
                 'email' => '',
                 'password' => '',
-                'confirm-password' => '',
+                'confirm_password' => '',
                 'name-err' => '',
                 'email-err' => '',
                 'password-err' => '',
@@ -47,7 +60,7 @@ class Users extends Controller{
             ];
 
             // load the register
-            $this->view('users/register');
+            $this->view('users/register',$data);
         }
     }
 }

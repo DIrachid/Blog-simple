@@ -13,7 +13,7 @@ class Database{
     private $stm;
 
     public function __construct(){
-        $dsn = "mysqli:host=".$this->host."; dbname=".$this->db_name;
+        $dsn = "mysql:host=".$this->host."; dbname=".$this->db_name;
         try{
             $this->pdo = new PDO($dsn,$this->user,$this->password);
         }catch(PDOException $e){
