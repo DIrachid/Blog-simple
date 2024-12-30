@@ -14,7 +14,7 @@ class Users extends Controller
 
     public function register(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+            // $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
             $data = [
                 'name' => $_POST['username'],
@@ -27,26 +27,34 @@ class Users extends Controller
                 'confirm-password-err' => '',
             ];
 
+            
+
             if(empty($data['name'])) $data['name-err'] = 'Please fill your name';
             if(empty($data['email'])) $data['email-err'] = 'Please fill your email';
             if(empty($data['password'])) $data['password-err'] = 'Please fill your password';
             if(empty($data['confirm_password'])) $data['confirm-password-err'] = 'Please fill your confirm password';
             if($data['password'] !== $data['confirm_password']) $data['confirm-password-err'] = "password is don't match";
-
+            
             // check if you email exist
 
             if($this->usermodel->getUserByEmail($data['email'])){
                 $data['email-err'] = 'email already taken';
             }
-
             // create user
-
-            if(!empty($data['name-err']) && !empty($data['email-err']) && !empty($data['password-err']) && !empty(['confirm-password-err'])){
-                $this->view('users/register',$data);
+            
+            var_dump($data);
+            if(empty($data['name-err']) && empty($data['email-err']) && empty($data['password-err']) && empty($data['confirm-password-err'])){
+                $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+                var_dump($data['password']);
+                if($this->usermodel->register($data['name'],$data['email'],$data['password'])){
+                    redirect('users/login');
+                }else{
+                    die('something is wrong');
+                }
             }else{
-
+                $this->view('users/register',$data);
+                echo "okay";
             }
-
         }else{
             $data = [
                 'name' => '',

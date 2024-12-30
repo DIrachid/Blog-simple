@@ -5,25 +5,25 @@
         <div class="card card-body p-3">
             <h2>Create Account</h2>
             <span class="mb-2">Please fill all the information to create your account</span>
-            <form action="<?php echo URLROOT ?>users/register">
+            <form action="<?php echo URLROOT ?>users/register" method="POST">
                 <div class="form-groups">
                     <span for="name">Username <sup>*</sup></span>
-                    <input type="text" name="username" value="<?php $data['name'] ?>" class="form-control form-control-lg <?php echo (!empty($data['name-err'] ? 'is-invalid' : '' )) ?>">
+                    <input type="text" name="username" value="<?php echo $data['name'] ?>" class="form-control form-control-lg <?php echo (!empty($data['name-err']) ? 'is-invalid' : '' ) ?>">
                     <span class="invalid-feedback"><?php echo $data['name-err'] ?></span>
                 </div>
                 <div class="form-groups">
                     <span for="email">Email <sup>*</sup></span>
-                    <input type="email" name="email" value="<?php $data['email'] ?>" class="form-control form-control-lg <?php echo (!empty($data['email-err'] ? 'is-invalid' : '' )) ?>">
+                    <input type="email" name="email" value="<?php echo $data['email'] ?>" class="form-control form-control-lg <?php echo (!empty($data['email-err']) ? 'is-invalid' : '' ) ?>">
                     <span class="invalid-feedback"><?php echo $data['email-err'] ?></span>
                 </div>
                 <div class="form-groups">
                     <span for="password">Password <sup>*</sup></span>
-                    <input type="password" name="password" value="<?php $data['password'] ?>" class="form-control form-control-lg <?php echo (!empty($data['password-err'] ? 'is-invalid' : '' )) ?>">
+                    <input type="password" name="password" value="<?php echo $data['password'] ?>" class="form-control form-control-lg <?php echo (!empty($data['password-err']) ? 'is-invalid' : '' ) ?>">
                     <span class="invalid-feedback"><?php echo $data['password-err'] ?></span>
                 </div>
                 <div class="form-groups">
                     <span for="confirm_password">Confirm Password <sup>*</sup></span>
-                    <input type="password" name="confirm_password" value="<?php $data['confirm_password'] ?>" class="form-control form-control-lg <?php echo (!empty($data['confirm-password-err'] ? 'is-invalid' : '' )) ?>">
+                    <input type="password" name="confirm_password" value="<?php echo $data['confirm_password'] ?>" class="form-control form-control-lg <?php echo (!empty($data['confirm-password-err']) ? 'is-invalid' : '' ) ?>">
                     <span class="invalid-feedback"><?php echo $data['confirm-password-err'] ?></span>
                 </div>
                 <div class="">

@@ -10,10 +10,23 @@ class User{
     }
 
     public function getUserByEmail($email){
-        $this->db->query('select * from user where email = :email');
+        $this->db->query('select * from users where email = :email');
         $this->db->bind(':email',$email);
         $this->db->execute();
         if($this->db->count()) return true;
         else return false;
+    }
+
+    public function register($name,$email,$password){
+        $this->db->query("insert into users(username,email,password) values (:name,:email,:password)");
+        $this->db->bind(':name',$name);
+        $this->db->bind(':email',$email);
+        $this->db->bind(':password',$password);
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        } 
     }
 }

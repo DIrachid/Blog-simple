@@ -11,7 +11,7 @@ class Database{
 
     private $pdo;
     private $stm;
-
+ 
     public function __construct(){
         $dsn = "mysql:host=".$this->host."; dbname=".$this->db_name;
         try{
