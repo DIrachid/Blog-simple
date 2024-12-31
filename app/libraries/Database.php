@@ -57,7 +57,7 @@ class Database{
     }
 
     public function execute(){
-        $this->stm->execute();
+        return $this->stm->execute();
     }
 
     public function fetchall(){

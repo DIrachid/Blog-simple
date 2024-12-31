@@ -44,8 +44,7 @@ class Users extends Controller
             
             var_dump($data);
             if(empty($data['name-err']) && empty($data['email-err']) && empty($data['password-err']) && empty($data['confirm-password-err'])){
-                $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
-                var_dump($data['password']);
+
                 if($this->usermodel->register($data['name'],$data['email'],$data['password'])){
                     redirect('users/login');
                 }else{
@@ -53,7 +52,6 @@ class Users extends Controller
                 }
             }else{
                 $this->view('users/register',$data);
-                echo "okay";
             }
         }else{
             $data = [
@@ -70,5 +68,10 @@ class Users extends Controller
             // load the register
             $this->view('users/register',$data);
         }
+        
+    }
+
+    public function login(){
+        // login
     }
 }

@@ -28,7 +28,7 @@
                 </div>
                 <div class="">
                     <input type="submit" value="Register" class="btn btn-success">
-                    <a href="<?php echo APPROOT; ?>" class="btn btn-secondary">Have you an account login</a>
+                    <a href="<?php echo APPROOT; ?>users/login" class="btn btn-secondary">Have you an account login</a>
                 </div>
             </form>
         </div>

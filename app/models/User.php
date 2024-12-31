@@ -22,11 +22,7 @@ class User{
         $this->db->bind(':name',$name);
         $this->db->bind(':email',$email);
         $this->db->bind(':password',$password);
-        if($this->db->execute()){
-            return true;
-        }
-        else{
-            return false;
-        } 
+        if($this->db->execute()) return true;
+        else return false;
     }
 }
