@@ -62,14 +62,14 @@ class Database{
 
     public function fetchall(){
         $this->stm->execute();
-        $result = $this->stm->fetchAll();
+        $result = $this->stm->fetchAll(PDO::FETCH_OBJ);
 
         return $result;
     }
 
     public function fetch(){
         $this->stm->execute();
-        $result = $this->stm->fetch();
+        $result = $this->stm->fetch(PDO::FETCH_OBJ);
 
         return $result;
     }

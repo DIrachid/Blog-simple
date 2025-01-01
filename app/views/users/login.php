@@ -1,4 +1,4 @@
-<?php include_once APPROOT . '/views/inc/header.php'; ?>
+<?php include_once APPROOT . '/views/inc/header.php'; ?> 
 
 <div class="row">
     <div class="col-md-6 mx-auto mt-4">

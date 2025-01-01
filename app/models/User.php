@@ -25,4 +25,16 @@ class User{
         if($this->db->execute()) return true;
         else return false;
     }
+
+    public function login($email,$password){
+        $this->db->query('select * from users where email = :email');
+        $this->db->bind(':email',$email);
+        $row = $this->db->fetch();
+        $hashed = $row->password;
+        if(password_verify($password,$hashed)){
+            return $row;
+        }else{
+            return false;
+        }
+    }
 }

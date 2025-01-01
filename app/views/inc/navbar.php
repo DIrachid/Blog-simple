@@ -43,19 +43,19 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <button data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2">
-          Login
+        <?php if(isset($_SESSION['user_id'])){ ?>
+          <span class="mr-3"> Welcome back <?php echo $_SESSION['user_name'] ?> </span>
+        <button data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2" >
+          <a href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+        </button>
+<?php }else{ ?>
+        <button data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2" >
+        <a href="<?php echo URLROOT; ?>/users/login">Login</a>
         </button>
         <button data-mdb-ripple-init type="button" class="btn btn-primary me-3">
-          Sign up for free
+        <a href="<?php echo URLROOT; ?>/users/register" class="text-white bg-dark">Sing up</a>
         </button>
-        <a
-          data-mdb-ripple-init
-          class="btn btn-dark px-3"
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
-          role="button"
-          ><i class="fab fa-github"></i
-        ></a>
+        <?php } ?>
       </div>
     </div>
     <!-- Collapsible wrapper -->
