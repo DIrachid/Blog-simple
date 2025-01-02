@@ -1,8 +1,8 @@
-<?php include_once APPROOT . 'views/inc/header.php';?>
+<?php include_once APPROOT . '/views/inc/header.php';?>
 
-    <div class="card card-body">
+    <div class="card card-body mt-5"> 
         <h2>Create new Post</h2>
-        <form action="<?php URLROOT ?>/posts/add" method="post">
+        <form action="<?php echo URLROOT ?>/posts/add" method="post">
             <div class="form-group">
                 <input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="title ..." class="form-control form-control-lg <?php echo (!empty($data['title-err'])) ? 'is-invalid' : '' ?>">
                 <span class="invalid-feedback" ><?php echo $data['title-err'] ?></span>
@@ -17,4 +17,5 @@
         </form> 
     </div>
 
-<?php include_once APPROOT . 'views/inc/footer.php'; ?>
+<?php include_once APPROOT . '/views/inc/footer.php'; ?>
+

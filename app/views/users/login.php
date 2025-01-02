@@ -5,7 +5,7 @@
         <div class="card card-body p-3">
             <h2>Create Account</h2>
             <span class="mb-2">Please fill all the information to create your account</span>
-            <form action="<?php echo URLROOT ?>users/login" method="POST">
+            <form action="<?php echo URLROOT ?>users/login" method="post">
                 <div class="form-groups">
                     <span for="email">Email <sup>*</sup></span>
                     <input type="email" name="email" value="<?php echo $data['email'] ?>" class="form-control form-control-lg <?php echo (!empty($data['email-err']) ? 'is-invalid' : '' ) ?>">
