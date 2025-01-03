@@ -26,6 +26,22 @@ class Post{
         else return false;
     }
 
+    public function update($data){
+        $this->db->query("update posts set title = :title,content = :content where id = :id");
+        $this->db->bind(':title',$data['title']);
+        $this->db->bind(':content',$data['body']);
+        $this->db->bind(':id',$data['id']);
+        if($this->db->execute()) return true;
+        else return false;
+    }
+
+    public function delete($id){
+        $this->db->query("delete from posts where id =:id");
+        $this->db->bind(':id',$id);
+        if($this->db->execute()) return true;
+        else return false;
+    }
+
     // that for lot posts 
     public function getposts(){
         $this->db->query('select * from posts');
